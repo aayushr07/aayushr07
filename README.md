@@ -1,5 +1,6 @@
 - 👋 Hi, I’m @aayushr07
 - 👀 I’m interested in programming
+- I am Professional in C,Python and have Basic Knowledge about About Flask ,Tailwind CSS . 
 - 🌱 I’m currently learning SQL and NODE.JS(Express.js)
 - 📫 How to reach me aaruser2@gmail.com
 
