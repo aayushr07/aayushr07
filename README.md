@@ -1,7 +1,7 @@
 # Hi there, I'm Aayush Redij! 👋  
 
 🚀 Passionate **Full-Stack Developer** | **Blockchain Enthusiast** | **DevOps Learner**  
-Currently building **CleanEats, MediFlow, Attendease**, and more innovative projects!  
+Currently building CleanEats and more innovative projects!  
 
 ## 🛠️ Languages and Technologies:
 
