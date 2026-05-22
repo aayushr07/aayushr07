@@ -1,0 +1,77 @@
+name: Green Square Bot
+
+on:
+  schedule:
+    - cron: "17 3 * * *"    # 3:17 AM UTC
+    - cron: "42 14 * * *"   # 2:42 PM UTC
+    - cron: "55 8 * * *"    # 8:55 AM UTC — 3rd window for more coverage
+  workflow_dispatch:
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Git
+        run: |
+          git config --global user.email "aaruser2@gmail.com"
+          git config --global user.name "aayushr07"
+
+      - name: Random day & commit count
+        run: |
+          # ~80% chance of committing today = roughly 5-6 days out of 7
+          SHOULD_COMMIT=$(( RANDOM % 100 ))
+          if [ $SHOULD_COMMIT -lt 80 ]; then
+
+            # Randomly pick 1, 3, or 5 commits
+            # 1 commit → 40% | 3 commits → 35% | 5 commits → 25%
+            ROLL=$(( RANDOM % 100 ))
+            if [ $ROLL -lt 40 ]; then
+              NUM_COMMITS=1
+            elif [ $ROLL -lt 75 ]; then
+              NUM_COMMITS=3
+            else
+              NUM_COMMITS=5
+            fi
+
+            echo "📅 Commit day! Making $NUM_COMMITS commit(s)..."
+
+            MESSAGES=(
+              "⚡ grinding through the codebase"
+              "🔧 small improvements"
+              "🌱 daily progress"
+              "🚀 pushing forward"
+              "✨ refining things"
+              "🐛 squashing bugs"
+              "📦 dependency updates"
+              "💡 new ideas in motion"
+              "🔍 reviewing and improving"
+              "🛠️ maintenance work"
+              "📝 updating docs"
+              "🎯 stay consistent"
+              "🧹 cleanup and polish"
+              "🔐 security improvements"
+              "⚙️ config tweaks"
+            )
+
+            for i in $(seq 1 $NUM_COMMITS); do
+              # Random sleep 1–60 min between commits so timestamps look natural
+              SLEEP_TIME=$(( ( RANDOM % 3600 ) + 60 ))
+              sleep $SLEEP_TIME
+
+              MSG_INDEX=$(( RANDOM % ${#MESSAGES[@]} ))
+              MSG="${MESSAGES[$MSG_INDEX]}"
+
+              echo "$(date) — commit $i of $NUM_COMMITS" >> activity.md
+              git add activity.md
+              git commit -m "$MSG — $(date +'%Y-%m-%d %H:%M')"
+              git push
+            done
+
+          else
+            echo "😴 Rest day — skipping today to keep graph natural"
+          fi
