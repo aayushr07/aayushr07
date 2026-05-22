@@ -179,8 +179,7 @@ smart contracts & Web3 apps.
   <img alt="github-snake" src="https://raw.githubusercontent.com/aayushr07/aayushr07/output/github-contribution-grid-snake-dark.svg" />
 </picture>
 
-- name: generate-snake-game-from-github-contribution-grid
-  uses: Platane/snk@v3.5.0
+> ⚡ *Enable the snake animation by adding a GitHub Actions workflow — [see guide](https://github.com/Platane/snk)*
 
 </div>
 
